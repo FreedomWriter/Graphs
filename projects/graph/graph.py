@@ -63,7 +63,7 @@ class Graph:
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        # Create an empty queue
+        # Create an empty stack
         stack = Stack()
 
         # Add starting vertex id
@@ -91,7 +91,17 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        visited = set()
+
+        def recursive_helper(starting_vertex):
+            if starting_vertex not in visited:
+                visited.add(starting_vertex)
+                print(starting_vertex)
+                for neighbor in self.get_neighbors(starting_vertex):
+                    recursive_helper(neighbor)
+
+        return recursive_helper(starting_vertex)
+        
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -101,18 +111,32 @@ class Graph:
         """
         pass # TOD0
         # create an empty queue
+        q = Queue()
         # enqueue a path to the starting vertex ID
+        q.enqueue([starting_vertex])
         # create a set to store visited vertices
+        visited = set()
         # while the queue is not empty
+        while q.size() > 0:
             # dequeue the first path
+            path = q.dequeue()
             # grab the last vertex from the path
-            # if that vertext has not been visited
+            last = path[-1]
+            # if that vertex has not been visited
+            if last not in visited:
                 # check if it's the target
+                if last == destination_vertex:
                     # if so, return the path
+                    return path
                 # mark it as visited
+                visited.add(last)
                 # then add a path to it's neighbors to the back of the queue
-                    # copt the path
-                    # append the enighbor to the back
+                for neighbor in self.get_neighbors(last):
+                    # copy the path
+                    new_path = list(path)
+                    # append the neighbor to the back
+                    new_path.append(neighbor)
+                    q.enqueue(new_path)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
