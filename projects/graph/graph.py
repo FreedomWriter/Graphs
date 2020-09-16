@@ -100,6 +100,19 @@ class Graph:
         breath-first order.
         """
         pass # TOD0
+        # create an empty queue
+        # enqueue a path to the starting vertex ID
+        # create a set to store visited vertices
+        # while the queue is not empty
+            # dequeue the first path
+            # grab the last vertex from the path
+            # if that vertext has not been visited
+                # check if it's the target
+                    # if so, return the path
+                # mark it as visited
+                # then add a path to it's neighbors to the back of the queue
+                    # copt the path
+                    # append the enighbor to the back
 
     def dfs(self, starting_vertex, destination_vertex):
         """
