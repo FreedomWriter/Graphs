@@ -215,7 +215,6 @@ class Graph:
 
 
             for neighbor in self.get_neighbors(starting_vertex):
-                # print(visited, path_copy)
                 new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
                 if new_path is not None:
                     return new_path
