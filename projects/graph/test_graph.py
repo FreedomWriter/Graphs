@@ -108,12 +108,13 @@ class Test(unittest.TestCase):
         ]
         self.assertIn(self.graph.dfs(1,6), dfs)
 
-    # def test_dfs_recursive(self):
-    #     dfs = [
-    #         [1, 2, 4, 6],
-    #         [1, 2, 4, 7, 6]
-    #     ]
-    #     self.assertIn(self.graph.dfs_recursive(1,6), dfs)
+    def test_dfs_recursive(self):
+        dfs = [
+            [1, 2, 4, 6],
+            [1, 2, 4, 7, 6]
+        ]
+        self.assertIn(self.graph.dfs_recursive(1,6), dfs)
+        # print(f"test print: {self.graph.dfs_recursive(1,6)}")
 
 if __name__ == '__main__':
     unittest.main()
