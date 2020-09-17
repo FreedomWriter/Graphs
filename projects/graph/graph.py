@@ -109,7 +109,7 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass # TOD0
+        
         # create an empty queue
         q = Queue()
         # enqueue a path to the starting vertex ID
@@ -144,7 +144,34 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        
+        # create an empty queue
+        q = Stack()
+        # enqueue a path to the starting vertex ID
+        q.push([starting_vertex])
+        # create a set to store visited vertices
+        visited = set()
+        # while the queue is not empty
+        while q.size() > 0:
+            # dequeue the first path
+            path = q.pop()
+            # grab the last vertex from the path
+            last = path[-1]
+            # if that vertex has not been visited
+            if last not in visited:
+                # check if it's the target
+                if last == destination_vertex:
+                    # if so, return the path
+                    return path
+                # mark it as visited
+                visited.add(last)
+                # then add a path to it's neighbors to the back of the queue
+                for neighbor in self.get_neighbors(last):
+                    # copy the path
+                    new_path = list(path)
+                    # append the neighbor to the back
+                    new_path.append(neighbor)
+                    q.push(new_path)
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
