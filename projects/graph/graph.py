@@ -191,6 +191,35 @@ class Graph:
                     new_path.append(neighbor)
                     s.push(new_path)
 
+    # def dfs_recursive(self, starting_vertex, destination_vertex, visited=None, path=None):
+    #     """
+    #     Return a list containing a path from
+    #     starting_vertex to destination_vertex in
+    #     depth-first order.
+
+    #     This should be done using recursion.
+    #     """
+    #     if visited is None:
+    #         visited = set()
+        
+    #     if path is None:
+    #         path= []
+
+    #     if starting_vertex not in visited:
+    #         visited.add(starting_vertex)
+    #         path_copy = path.copy()
+    #         # path_copy = path + [starting_vertex]
+    #         path_copy.append(starting_vertex)
+
+    #         if starting_vertex == destination_vertex:
+    #             return path_copy
+
+
+    #         for neighbor in self.get_neighbors(starting_vertex):
+    #             new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
+    #             if new_path is not None:
+    #                 return new_path
+                
     def dfs_recursive(self, starting_vertex, destination_vertex, visited=None, path=None):
         """
         Return a list containing a path from
@@ -205,19 +234,25 @@ class Graph:
         if path is None:
             path= []
 
-        if starting_vertex not in visited:
-            visited.add(starting_vertex)
-            path_copy = path.copy()
-            path_copy.append(starting_vertex)
+        visited.add(starting_vertex)
 
-            if starting_vertex == destination_vertex:
-                return path_copy
+        path = path + [starting_vertex] # makes a new copy of the path, not very explicit
+        # can be done like this:
+        #doing this ensures that we make a new path for each recursive call, even though we are using the same variable to store it
+        # path = list(path)
+        # path.append(starting_vertex)
+
+        if starting_vertex == destination_vertex:
+            return path
 
 
-            for neighbor in self.get_neighbors(starting_vertex):
-                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
+        for neighbor in self.get_neighbors(starting_vertex):
+            if neighbor not in visited:
+                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path)
                 if new_path is not None:
                     return new_path
+
+        return None
                 
 
 
