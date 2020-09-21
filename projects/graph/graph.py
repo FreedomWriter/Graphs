@@ -13,7 +13,20 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        self.vertices[vertex_id] = set()
+        if vertex_id not in self.vertices:
+            self.vertices[vertex_id] = set()
+
+    # O9n)
+    def delete_vertex(self, vertex_id):
+        # delete key-value pair
+
+        # delete all references to the vertex
+        pass
+
+    def delete_edge(self, v1, v2):
+        # access v2, remove v2
+        # access v2, remove v1
+        pass
 
     def add_edge(self, v1, v2):
         """
