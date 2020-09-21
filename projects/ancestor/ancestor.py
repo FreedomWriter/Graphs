@@ -13,9 +13,8 @@ def earliest_ancestor_fav(ancestors, starting_node):
 
     while solution in hash_table:
     # if the value currently stored as the solution is in the hash_table, update the solution to that childs earliest ancestor
-    # if solution in hash_table:
         solution = hash_table[solution] 
-    
+    # if the solution is not equal to the starting node, return it, otherwise return -1
     if solution != starting_node:
         return solution
     else:
