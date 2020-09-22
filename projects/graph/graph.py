@@ -115,20 +115,42 @@ class Graph:
 
     #     return recursive_helper(starting_vertex)
 
-    def dft_recursive(self, starting_vertex, visited=None):
+    # def dft_recursive(self, starting_vertex, visited=None):
+    #     """
+    #     Print each vertex in depth-first order
+    #     beginning from starting_vertex.
+
+    #     This should be done using recursion.
+    #     """
+    #     if visited is None:
+    #         visited = set()
+
+    #     if starting_vertex not in visited:
+    #         visited.add(starting_vertex)
+    #         print(starting_vertex)
+    #         for neighbor in self.get_neighbors(starting_vertex):
+    #             self.dft_recursive(neighbor, visited)
+
+    # TIM'S SOLUTION
+    def dft_recursive(self, starting_vertex, visited=set()):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
         """
-        if visited is None:
-            visited = set()
 
-        if starting_vertex not in visited:
+        if starting_vertex in visited:
+            return
+        else:
             visited.add(starting_vertex)
             print(starting_vertex)
-            for neighbor in self.get_neighbors(starting_vertex):
+            neighbors = self.get_neighbors(starting_vertex)
+
+            if len(neighbors) == 0:
+                return None
+
+            for neighbor in neighbors:
                 self.dft_recursive(neighbor, visited)
 
      

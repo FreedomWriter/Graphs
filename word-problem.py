@@ -88,8 +88,17 @@ class NewQueue():
     def size(self):
         return len(self.queue)
 
-def get_neighbors():
-    
+def get_neighbors(v):
+    neighbors = []
+    for i in range(len(word)):
+        letter = word[i]
+
+        for alpha_letter in alphabet:
+            word_list = list(word_list)
+            word_list[i] = alpha_letter
+            maybe_neighbor = "".join(word_list)
+            if maybe in word_set and maybe_neighbor != word:
+                neighbors.append(maybe_neighbor)
 
 def find_word_ladder(begin_word, end_word):
     visited = set()

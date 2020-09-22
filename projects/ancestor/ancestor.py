@@ -1,20 +1,30 @@
+'''
+
+Describe the problem in graphs termininology
+what are our nodes?
+what are our edges?
+
+build your graph or write geetNeighbors()
+
+Choose your fighter
+Which alogorithm?
+
+'''
+
 def earliest_ancestor_fav(ancestors, starting_node):   
-    # key == child, value == earliest direct ancestor
     hash_table = {}
     # initialize the solution with a value
     solution = starting_node
 
-    # iterate through the ancestors list
     for i in range(len(ancestors)):
         # populate hash_table where the key is the child, and the value current earliest ancestor (ancestors[i][0] gives us the earlier of the two possible ancestors because of the order ancestors are stored in the tuple)
         if not ancestors[i][1] in hash_table:
             hash_table[ancestors[i][1]] = ancestors[i][0]
 
-
+    # While the value stored in solution exists as a key in the hash tabble, update the solution to that childs earliest ancestor
     while solution in hash_table:
-    # if the value currently stored as the solution is in the hash_table, update the solution to that childs earliest ancestor
         solution = hash_table[solution] 
-    # if the solution is not equal to the starting node, return it, otherwise return -1
+
     if solution != starting_node:
         return solution
     else:
@@ -119,6 +129,16 @@ def find_neighbors(child, arr):
     # return the list of neighbors
     return neighbors
 
+def earliest_ancestor_tim(ancestors, starting_node):
+    pass
+    ## iterate over all ancestors,
+    ## add each node to the graph
+    ## add each eduge to the graph
+
+    ## run a traversal
+
+    ## modify it so as you go, you keep track of the node that's farthers
+
 # earliest_ancestor = earliest_ancestor_graph
 earliest_ancestor = earliest_ancestor_fav
 
@@ -126,3 +146,5 @@ earliest_ancestor = earliest_ancestor_fav
 # print(earliest_ancestor(test_ancestors, 1))
 # print(earliest_ancestor(test_ancestors, 7))
 # print(earliest_ancestor(test_ancestors, 10))
+
+
