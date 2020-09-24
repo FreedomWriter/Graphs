@@ -140,7 +140,7 @@ def earliest_ancestor_tim(ancestors, starting_node):
     ## modify it so as you go, you keep track of the node that's farthers
 
 # earliest_ancestor = earliest_ancestor_graph
-earliest_ancestor = earliest_ancestor_fav
+earliest_ancestor = earliest_ancestor_graph
 
 # test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
 # print(earliest_ancestor(test_ancestors, 1))
