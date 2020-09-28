@@ -200,7 +200,7 @@ class Graph:
         
         # create an empty stack
         s = Stack()
-        # push a path to the starting vertex ID
+        # push a path to the starting vertexID
         s.push([starting_vertex])
         # create a set to store visited vertices
         visited = set()
