@@ -40,7 +40,7 @@ class SocialGraph:
         self.users = {}
         self.friendships = {}
 
-    def populate_graph(self, num_users, avg_friendships):
+    def populate_graph(self, num_users, avg_friendships): # O(n^2)
         """
         Takes a number of users and an average number of friendships
         as arguments
@@ -81,6 +81,48 @@ class SocialGraph:
         for i in range(num_users * avg_friendships // 2):
             friendships = possible_friendships[i]
             self.add_friendship(friendships[0], friendships[1])
+
+    # def populate_graph(self, num_users, avg_friendships): # O(n^2)
+    #     """
+    #     Takes a number of users and an average number of friendships
+    #     as arguments
+
+    #     Creates that number of users and a randomly distributed friendships
+    #     between those users.
+
+    #     The number of users must be greater than the average number of friendships.
+    #     """
+    #     # Reset graph
+    #     # CREATED A RESET FUNCTION TO HANDLE THIS
+    #     # self.last_id = 0
+    #     # self.users = {}
+    #     # self.friendships = {}
+
+    #     self.reset()
+    #     # !!!! IMPLEMENT ME
+
+    #     # Add users
+    #     for i in range(num_users):
+    #         self.add_user(f"User {i}")
+
+    #     # Create friendships
+    #     possible_friendships = []
+
+    #     # THIS WOULD CREATE REDUNDANT FRIENDSHIPS SINCE IF USER 1 IS FRIENDS WITH USER 2, THEN BY THE NATURE OF ADD_FRIENDSHIPS, USER 2 WOULD BE FRIENDS WITH USER 1
+    #     # for user_id in self.users:
+    #     #     for friend_id in self.users:
+    #     #         possible_friendships.append((user_id, friend_id))
+
+    #     for user_id in self.users:
+    #         for friend_id in range(user_id + 1, self.last_id + 1):
+    #             possible_friendships.append((user_id, friend_id))
+
+    #     random.shuffle(possible_friendships)
+
+    #     # we divide by two because each friendship is bi-directional
+    #     for i in range(num_users * avg_friendships // 2):
+    #         friendships = possible_friendships[i]
+    #         self.add_friendship(friendships[0], friendships[1])
 
     def get_all_social_paths(self, user_id):
         """
